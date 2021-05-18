@@ -1,0 +1,14 @@
+CREATE LOGIN TestLogin WITH PASSWORD = 'Test123password', DEFAULT_DATABASE=SeatSwap  
+GO  
+
+ALTER SERVER ROLE [sysadmin] ADD MEMBER [TestUser]
+GO
+
+CREATE USER [TestUser] FOR LOGIN [TestLogin]
+GO
+
+ALTER USER [TestUser] WITH DEFAULT_SCHEMA=[dbo]
+GO
+
+ALTER ROLE [db_owner] ADD MEMBER [TestUser]
+GO
